@@ -1,16 +1,18 @@
 import React from 'react'
 import SelectedMovie from "./components/body/SelectedMovie";
 import ListMovie from "./components/body/ListMovie";
+import "./body.css";
+
 
 export default function Home() {
     return(
         <>
-        <div className="App">FilFluence</div>
+        <div className="App">Home</div>
         
-        <main className="container m-auto flex gap-12 py-5">
+        <main className="selectMovie">
             <SelectedMovie />
         </main>
-        <section>
+        <section className='listCard'>
             <ListMovie />
         </section>
         </>
