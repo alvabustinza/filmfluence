@@ -1,27 +1,23 @@
 import React from "react";
+import "./RatedMovies.css";
 
-function RatedMovies() {
+function RatedMovies({ id, image, title, rating, description, comments }) {
   return (
     <div className="ratedMovies">
-      <div className="ratedMovies__left">
-        <div>
-          <h3>Hello, {user?.email}</h3>
-          <h2 className="ratedMovies__title">Your rated movies</h2>
+      <img className="ratedMovies__image" src={image} />
 
-          {basket.map((item) => (
-            <CheckoutProduct
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
-            />
-          ))}
+      <div className="ratedMovies__info">
+        <p className="ratedMovies__title">{title}</p>
+        <p className="ratedMovies__description">{description}</p>
+        <p className="ratedMovies__comments">{comments}</p>
+
+        <div className="ratedMovies__rating">
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <p>🌟</p>
+            ))}
         </div>
-      </div>
-
-      <div className="checkout__right">
-        <Subtotal />
       </div>
     </div>
   );
