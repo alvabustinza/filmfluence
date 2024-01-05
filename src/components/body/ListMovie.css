@@ -1,11 +1,6 @@
-.listMovie {
-}
-
 .flex-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px; /* Espacio entre elementos */
+  gap: 20px; 
 }
-
-/* Estilos del componente Movie si es necesario */

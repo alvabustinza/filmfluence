@@ -29,7 +29,7 @@
   color: #fff;
   cursor: pointer;
   display: block;
-  width: 8.5rem;
+  width: fit-content !important;
   display: flex;
   align-items: center;
   justify-content: center;

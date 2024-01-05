@@ -5,17 +5,19 @@
   align-items: center;
   width: 200px;
   height: 320px;
-  border-radius: 3px;
+  border-radius: 1rem;
   background-color: #dddddd;
   border: 1px solid #434343;
   position: relative;
   margin: 10px;
+  /* z-index: 1; */
 }
 
 .movie__posterPath {
   height: 250px !important;
   cursor: pointer;
   transition: transform 0.3s ease;
+  border-radius: 0 1rem 0 1rem;
 }
 
 .movie__selector {
@@ -25,22 +27,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0; 
+  transition: opacity 0.3s ease;
 }
 
 .movie__selectorIcon {
   height: 100% !important;
   width: 100% !important;
   padding: 5px;
-  opacity: 0; /* Inicialmente oculto */
   color: white;
 }
 
 .movie:hover {
-  opacity: 1;
   background-color: #434343;
   border-radius: 0.375rem;
   cursor: pointer;
   transition: opacity 0.3s ease; /* Agrega una transición suave */
+}
+
+.movie:hover .movie__selector {
+  background-color: #434343;
+  opacity: 1;
 }
 
 .movie:hover .movie__selector .movie__selectorIcon {
