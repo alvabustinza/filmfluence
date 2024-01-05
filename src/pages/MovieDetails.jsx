@@ -20,7 +20,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+            Visualizar trailer de pelicula 
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -52,7 +52,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Footer>
       </Modal>
     );
-  }
+}
 
 export default function MovieDetails() {
     const [textareaValue, setTextareaValue] = useState('');
