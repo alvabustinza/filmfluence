@@ -8,10 +8,14 @@ import VideoFileIcon from "@mui/icons-material/VideoFile";
 import { Image, FloatingLabel, Form, Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import { database } from "../firebase";
+import { ref, set } from "firebase/database";
+
+import { useStateValue } from "../StateProvider";
 
 function MyVerticallyCenteredModal(props) {
   const [playing, setPlaying] = useState(false);
+
   return (
     <Modal
       {...props}
@@ -68,6 +72,18 @@ export default function MovieDetails() {
 
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
+  };
+
+  const [{ baket, user }, dispach] = useStateValue();
+
+  const saveData = (data) => {
+    set(ref(database, `usuarios/${user.uid}/misPeliculas`), data)
+      .then(() => {
+        console.log("Datos guardados exitosamente en Firebase RTDB");
+      })
+      .catch((error) => {
+        console.error("Error al guardar datos:", error);
+      });
   };
 
   return (
@@ -171,7 +187,7 @@ export default function MovieDetails() {
             <Button
               className="confWidhtButton"
               variant="primary"
-              onClick={() => setModalShow(true)}
+              onClick={saveData("Hola")}
             >
               Guardar <VideoFileIcon />
             </Button>
