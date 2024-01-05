@@ -9,3 +9,15 @@ input[type=radio]{
 .star{
     cursor: pointer;
 }
+
+.Genres{
+    font-size: 1rem;
+    color: #555;
+    margin-top: -10px;
+    margin-left: 5px;
+
+}
+
+.Genres:hover{
+    color: blue;
+}

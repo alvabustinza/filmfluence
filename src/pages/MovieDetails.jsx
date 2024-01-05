@@ -3,7 +3,9 @@ import "./MovieDetails.css";
 import { useState } from 'react';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { Image, FloatingLabel, Form, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import YouTube from 'react-youtube';
 
 function MyVerticallyCenteredModal(props) {
@@ -58,6 +60,11 @@ export default function MovieDetails() {
     const [hover, setHover] = useState(null);
     const [modalShow, setModalShow] = React.useState(false);
 
+  const dateObject  = new Date('1977-05-25');
+  const day = dateObject.getDate();
+  const month = dateObject.toLocaleString('default', { month: 'long' }); // Obtiene el nombre del mes
+  const year = dateObject.getFullYear();
+
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
@@ -71,7 +78,17 @@ export default function MovieDetails() {
                 thumbnail 
             />
             <div className='d-flex flex-column w-50'>
-                <h1 className='m-0'>Titulo Pelicula <span className='YearDetails'>(Año)</span></h1> 
+                <h1 className='m-0'>Star Wars Collection <span className='YearDetails'>({day} de {month} de {year})</span></h1> 
+                <div className='d-flex mt-1'>
+                    <Link to="/" className='Genres'>Adventure </Link>
+                    <Link to="/" className='Genres'>Action </Link>
+                    <Link to="/" className='Genres'>Science Fiction </Link>
+                </div>
+                {/* <Link 
+                    to="/moviedetails"
+                    className='moviedetails btnfos btnfos-5'
+                >Detalles <KeyboardDoubleArrowRightIcon className='Next'/>
+                </Link> */}
                 <p className='m-0 ms-1 mt-3'>Descripcion de la peliculaDescripcion de la peliculaDescripcion de la peliculaDescripcion de la peliculaDescripcion de la peliculaDescripcion de la peliculaDescripcion de la pelicula</p>
                 <FloatingLabel controlId="floatingTextarea2" label="Comentarios" className='mt-3'>
                 <Form.Control
@@ -118,8 +135,8 @@ export default function MovieDetails() {
                         );
                     })}
                 </div>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Launch vertically centered modal
+                <Button className='mt-5 w-25' variant="primary" onClick={() => setModalShow(true)}>
+                    Ver Trailer <PlayCircleIcon/>
                 </Button>
 
                 <MyVerticallyCenteredModal
