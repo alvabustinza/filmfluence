@@ -4,6 +4,7 @@ import { useState } from 'react';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import VideoFileIcon from '@mui/icons-material/VideoFile';
 import { Image, FloatingLabel, Form, Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import YouTube from 'react-youtube';
@@ -71,13 +72,13 @@ export default function MovieDetails() {
 
   return (
     <>
-        <main fluid className="d-flex justify-content-center align-items-start m-5 gap-4">
+        <main fluid className="d-flex justify-content-center align-items-center align-items-md-start m-5 gap-4 flex-column flex-md-row">
             <Image 
                 src="https://image.tmdb.org/t/p/original/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg" 
                 className='ListImg p-2'
                 thumbnail 
             />
-            <div className='d-flex flex-column w-50'>
+            <div className='d-flex flex-column confWidth'>
                 <h1 className='m-0'>Star Wars Collection <span className='YearDetails'>({day} de {month} de {year})</span></h1> 
                 <div className='d-flex mt-1'>
                     <Link to="/" className='Genres'>Adventure </Link>
@@ -135,9 +136,17 @@ export default function MovieDetails() {
                         );
                     })}
                 </div>
-                <Button className='mt-5 w-25' variant="primary" onClick={() => setModalShow(true)}>
-                    Ver Trailer <PlayCircleIcon/>
-                </Button>
+
+                <div className='d-flex gap-3 mt-5'>
+                    <Button className='confWidhtButton' variant="secondary" onClick={() => setModalShow(true)}>
+                        Ver Trailer <PlayCircleIcon/>
+                    </Button>
+
+                    <Button className='confWidhtButton' variant="primary" onClick={() => setModalShow(true)}>
+                        Guardar <VideoFileIcon/>
+                    </Button>
+
+                </div>
 
                 <MyVerticallyCenteredModal
                     show={modalShow}

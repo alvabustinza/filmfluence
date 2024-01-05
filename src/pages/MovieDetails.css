@@ -21,3 +21,22 @@ input[type=radio]{
 .Genres:hover{
     color: blue;
 }
+
+.confWidth{
+    width: 50%;
+}
+
+.confWidhtButton{
+    width: 40%;
+}
+
+@media only screen and (max-width: 767px) {
+    .confWidth {
+      width: 100%;
+    }
+
+    .confWidhtButton{
+        width: 50%;
+    }
+    
+}
