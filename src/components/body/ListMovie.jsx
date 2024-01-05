@@ -10,12 +10,6 @@ function ListMovie( { movieList, onSelectMovie } ) {
       movie={movie}
       key={movie.id}
       onSelectMovie={onSelectMovie}
-      // img={movie.poster_path}
-      // title={movie.title}
-      // year={movie.release_date}
-      // id={movie.id}
-      // key={movie.id}
-      // onSelectMovie={onSelectMovie}
     />
   ));
 

@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React from "react";
 import "./SelectedMovie.css";
 import { Link } from "react-router-dom";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
@@ -14,7 +14,7 @@ export default function SelectedMovie({ selectedMovieId }) {
           backgroundImage: `url(${urlFirst + selectedMovieId.backdrop_path})`,
         }}
       >
-        <Link to="/moviedetails" className="moviedetails">
+        <Link to="/moviedetails" className="moviedetails" state={{ movie: selectedMovieId }} >
           <h2>Detalles</h2>
           <KeyboardDoubleArrowRightIcon className="Next" />
         </Link>
