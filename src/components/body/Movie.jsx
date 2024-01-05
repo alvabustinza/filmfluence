@@ -9,6 +9,7 @@ function Movie() {
       <img
         className="movie__posterPath"
         src="https://image.tmdb.org/t/p/original/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+        alt="img de referencia de la pelicula"
         thumbnail
       />
       <div className="movie__selector">

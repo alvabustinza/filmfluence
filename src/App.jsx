@@ -10,6 +10,7 @@ import Ranking from "./components/Ranking";
 
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
+import MovieDetails from "./pages/MovieDetails";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -56,6 +57,7 @@ function App() {
             <>
               {" "}
               <Header />
+              <MovieDetails />
             </>
           }
         />

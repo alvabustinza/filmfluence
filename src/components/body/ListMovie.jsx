@@ -1,6 +1,6 @@
 import React from "react";
 import "./ListMovie.css";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Movie from "./Movie";
 
 export default function ListMovie() {
