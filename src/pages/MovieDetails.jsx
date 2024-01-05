@@ -64,8 +64,7 @@ export default function MovieDetails() {
   const [rating, setRating] = useState(null);
   // const [ident, setIdent] = useState(null)
   // setIdent(state.movie.id);
-  const ident = state.movie.id;
-  const movie = state.movie;
+  const ident = state.movie;
 
   const [trailer, setTrailer] = useState(null);
   const [playing, setPlaying] = useState(false);
@@ -93,7 +92,10 @@ export default function MovieDetails() {
   const [{ baket, user }, dispach] = useStateValue();
 
   const saveData = (data) => {
-    set(ref(database, `usuarios/${user.uid}/misPeliculas`), data)
+    set(
+      ref(database, `usuarios/${user.uid}/misPeliculas/${state.movie.title}`),
+      data
+    )
       .then(() => {
         console.log("Datos guardados exitosamente en Firebase RTDB");
       })
@@ -209,14 +211,15 @@ export default function MovieDetails() {
             >
               Ver Trailer <PlayCircleIcon />
             </Button>
-
-            <Button
-              className="confWidhtButton"
-              variant="primary"
-              onClick={saveToDB}
-            >
-              Guardar <VideoFileIcon />
-            </Button>
+            <Link to="/">
+              <Button
+                className="confWidhtButton"
+                variant="primary"
+                onClick={saveToDB}
+              >
+                Guardar <VideoFileIcon />
+              </Button>
+            </Link>
           </div>
 
           <MyVerticallyCenteredModal
