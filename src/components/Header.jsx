@@ -18,7 +18,7 @@ function Header() {
         <img
           className="header__logo"
           src="https://firebasestorage.googleapis.com/v0/b/filmfluence-60906.appspot.com/o/Header%2Flogo_filmfluence_3-removebg-preview.png?alt=media&token=a569065d-6167-4659-b8f8-0fb73d1e537e"
-          alt="logo amazon"
+          alt="logo filmfluence"
         />
       </Link>
 
