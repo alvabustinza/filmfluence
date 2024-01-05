@@ -3,12 +3,12 @@ import "./Movie.css";
 
 import MissedVideoCallSharpIcon from "@mui/icons-material/MissedVideoCallSharp";
 
-function Movie() {
+function Movie({ img, title, year }) {
   return (
     <div className="movie">
       <img
         className="movie__posterPath"
-        src="https://image.tmdb.org/t/p/original/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+        src={"https://image.tmdb.org/t/p/w500" + img}
         alt="img de referencia de la pelicula"
         thumbnail
       />
@@ -16,8 +16,8 @@ function Movie() {
         <MissedVideoCallSharpIcon className="movie__selectorIcon" />
       </div>
 
-      <h3>Titulo </h3>
-      <p>year</p>
+      <h3>{title} </h3>
+      <p>{year.substring(0, 4)}</p>
     </div>
   );
 }
