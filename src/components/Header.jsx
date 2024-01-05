@@ -4,16 +4,24 @@ import "./Header.css";
 // ICONS
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MovieIcon from '@mui/icons-material/Movie';
+
+import { Link } from "react-router-dom";
+
 
 
 function Header() {
   return (
     <div className="header">
+      <Link to="/">
         <img
           className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src="https://firebasestorage.googleapis.com/v0/b/filmfluence-60906.appspot.com/o/Header%2Flogo_filmfluence_3-removebg-preview.png?alt=media&token=a569065d-6167-4659-b8f8-0fb73d1e537e"
           alt="logo amazon"
         />
+      </Link>
+
 
       <div className="header__search">
         <input className="header__searchInput" type="text" />
@@ -21,26 +29,21 @@ function Header() {
       </div>
 
       <div className="header__nav">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello Guest</span>
-            <span className="header__optionLineTwo">Sign In </span>
+        <Link to="/mymovies">
+          <div className="header__optionMovies">
+            <MovieIcon/>
+            <span className="header__optionLineTwo">Mis Peliculas</span>
           </div>
+        </Link>
 
-        <div className="header__option">
-          <span className="header__optionLineOne">Returns</span>
-          <span className="header__optionLineTwo">& Orders</span>
-        </div>
-        <div className="header__option">
-          <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Prime</span>
-        </div>
-
-          <div className="header__optionBasket">
-            <ShoppingBasketIcon />
-            <span className="header__optionLineTwo header__basketCount">
-              {0}
-            </span>
+        <Link to="/login">
+          <div className="header__optionGuest">
+            <AccountCircleIcon className="header__accountCircleIcon"/>
+            <span className="header__optionLineTwo">Hola Guest</span>
           </div>
+        </Link>
+
+
       </div>
     </div>
   );
