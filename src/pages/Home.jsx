@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import SelectedMovie from "../components/body/SelectedMovie";
+import ListMovie from "../components/body/ListMovie";
+import "./Home.css";
 
-function Home() {
+export default function Home() {
   return (
-    <div>Home</div>
-  )
-}
+    <div className="home">
+      <SelectedMovie />
 
-export default Home
+      <ListMovie />
+    </div>
+  );
+}

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Ranking from "./components/Ranking";
 
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
@@ -55,7 +56,6 @@ function App() {
             <>
               {" "}
               <Header />
-              moviedetails
             </>
           }
         />
@@ -65,7 +65,7 @@ function App() {
             <>
               {" "}
               <Header />
-              mymovies
+              <Ranking />
             </>
           }
         />
