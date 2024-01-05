@@ -18,14 +18,6 @@ function ListMovie() {
       });
   }, []);
 
-  /*const movies = Array.from({ length: 20 }, (_, index) => (
-    <Movie 
-    img = {}
-    title = {}
-    year = {}
-    key={index} />
-  )); */
-
   const movies = movieList.map((movie, index) => (
     <Movie
       img={movie.poster_path}
