@@ -1,6 +1,6 @@
 import React from "react";
 import "./MovieDetails.css";
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
@@ -8,9 +8,13 @@ import VideoFileIcon from "@mui/icons-material/VideoFile";
 import { Image, FloatingLabel, Form, Button, Modal } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import YouTube from "react-youtube";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import { database } from "../firebase";
+import { ref, set } from "firebase/database";
+
+import { useStateValue } from "../StateProvider";
 
 function MyVerticallyCenteredModal(props) {
+  const [playing, setPlaying] = useState(false);
 
   return (
     <Modal
@@ -54,14 +58,14 @@ function MyVerticallyCenteredModal(props) {
 
 export default function MovieDetails() {
   let { state } = useLocation();
-  const urlFirst = "https://image.tmdb.org/t/p/original"
+  const urlFirst = "https://image.tmdb.org/t/p/original";
 
   const [textareaValue, setTextareaValue] = useState("");
   const [rating, setRating] = useState(null);
   // const [ident, setIdent] = useState(null)
   // setIdent(state.movie.id);
-  const ident = state.movie.id
-  
+  const ident = state.movie;
+
   const [trailer, setTrailer] = useState(null);
   const [playing, setPlaying] = useState(false);
 
@@ -72,7 +76,6 @@ export default function MovieDetails() {
     setTrailer(trailer ? trailer : state.movie.videos.results[0]);
   }
   //return data
-
 
   const [hover, setHover] = useState(null);
   const [modalShow, setModalShow] = React.useState(false);
@@ -86,12 +89,32 @@ export default function MovieDetails() {
     setTextareaValue(event.target.value);
   };
 
+  const [{ baket, user }, dispach] = useStateValue();
+
+  const saveData = (data) => {
+    set(
+      ref(database, `usuarios/${user.uid}/misPeliculas/${state.movie.title}`),
+      data
+    )
+      .then(() => {
+        console.log("Datos guardados exitosamente en Firebase RTDB");
+      })
+      .catch((error) => {
+        console.error("Error al guardar datos:", error);
+      });
+  };
   const saveToDB = () => {
-    
-    console.log("Comentarios:", textareaValue);
-    console.log("Clasificación:", rating);
-    console.log("identificador:", ident);
-  }
+    const data = {
+      comentarios: textareaValue,
+      clasificacion: rating,
+      identificador: ident,
+    };
+
+    const jsonData = JSON.stringify(data);
+    saveData(jsonData);
+
+    // Lógica adicional para guardar en la base de datos si es necesario
+  };
 
   return (
     <>
@@ -113,13 +136,13 @@ export default function MovieDetails() {
           </h1>
           <div className="d-flex mt-1">
             <Link to="/" className="Genres">
-              Adventure - 
+              Adventure -
             </Link>
             <Link to="/" className="Genres">
-              Action - 
+              Action -
             </Link>
             <Link to="/" className="Genres">
-              Science Fiction 
+              Science Fiction
             </Link>
           </div>
           {/* <Link 
@@ -127,9 +150,7 @@ export default function MovieDetails() {
                     className='moviedetails btnfos btnfos-5'
                 >Detalles <KeyboardDoubleArrowRightIcon className='Next'/>
                 </Link> */}
-          <p className="m-0 ms-1 mt-3">
-            {state.movie.overview}
-          </p>
+          <p className="m-0 ms-1 mt-3">{state.movie.overview}</p>
           <FloatingLabel
             controlId="floatingTextarea2"
             label="Comentarios"
@@ -190,14 +211,15 @@ export default function MovieDetails() {
             >
               Ver Trailer <PlayCircleIcon />
             </Button>
-
-            <Button
-              className="confWidhtButton"
-              variant="primary"
-              onClick={() => saveToDB()}
-            >
-              Guardar <VideoFileIcon />
-            </Button>
+            <Link to="/">
+              <Button
+                className="confWidhtButton"
+                variant="primary"
+                onClick={saveToDB}
+              >
+                Guardar <VideoFileIcon />
+              </Button>
+            </Link>
           </div>
 
           <MyVerticallyCenteredModal

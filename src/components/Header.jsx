@@ -4,14 +4,16 @@ import "./Header.css";
 // ICONS
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import MovieIcon from '@mui/icons-material/Movie';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import MovieIcon from "@mui/icons-material/Movie";
+
+import { useStateValue } from "../StateProvider";
 
 import { Link } from "react-router-dom";
 
-
-
 function Header() {
+  const [{ baket, user }, dispach] = useStateValue();
+
   return (
     <div className="header">
       <Link to="/">
@@ -22,7 +24,6 @@ function Header() {
         />
       </Link>
 
-
       <div className="header__search">
         <input className="header__searchInput" type="text" />
         <SearchIcon className="header__searchIcon" />
@@ -31,19 +32,19 @@ function Header() {
       <div className="header__nav">
         <Link to="/mymovies">
           <div className="header__optionMovies">
-            <MovieIcon/>
+            <MovieIcon />
             <span className="header__optionLineTwo">Mis Peliculas</span>
           </div>
         </Link>
 
         <Link to="/login">
           <div className="header__optionGuest">
-            <AccountCircleIcon className="header__accountCircleIcon"/>
-            <span className="header__optionLineTwo">Hola Guest</span>
+            <AccountCircleIcon className="header__accountCircleIcon" />
+            <span className="header__optionLineTwo">
+              Hola {user ? user.email : "Guest"}
+            </span>
           </div>
         </Link>
-
-
       </div>
     </div>
   );
